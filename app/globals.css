@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Backgrounds — white luxury */
+  --color-page:      #FAFAF8;
+  --color-surface:   #FFFFFF;
+  --color-surface-2: #F5F3EE;
+  --color-surface-3: #EDE9E0;
+  --color-border:    #E0D9CC;
+  --color-border-subtle: #EDE9E0;
+
+  /* Gold accents */
+  --color-gold:       #B8962E;
+  --color-gold-light: #D4AF37;
+  --color-gold-bright:#E8C84A;
+  --color-gold-pale:  #F5EDD0;
+
+  /* Text */
+  --color-ink:        #1A1714;
+  --color-ink-2:      #3D3730;
+  --color-ink-3:      #6B6259;
+  --color-ink-4:      #9C9189;
+
+  /* Feedback */
+  --color-correct:      #1A6B3A;
+  --color-correct-bg:   #EBF7F0;
+  --color-wrong:        #9B2335;
+  --color-wrong-bg:     #FCEEF0;
+  --color-partial:      #8A6A00;
+  --color-partial-bg:   #FDF6E3;
+
+  /* Typography */
+  --font-serif: var(--font-playfair), "Playfair Display", Georgia, serif;
+  --font-sans:  var(--font-inter), "Inter", system-ui, sans-serif;
+  --font-mono:  var(--font-geist-mono), "Courier New", monospace;
+}
+
+:root {
+  --background: #FAFAF8;
+  --foreground: #1A1714;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: #F5F3EE; }
+::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #B8962E; }
+
+/* Gold glow utility */
+.glow-gold {
+  box-shadow: 0 0 20px rgba(184,150,46,0.12), 0 0 60px rgba(184,150,46,0.05);
+}
+
+/* Watch image outer glow */
+.watch-glow {
+  box-shadow:
+    0 0 0 1px rgba(184,150,46,0.12),
+    0 8px 32px rgba(26,23,20,0.08),
+    0 2px 8px rgba(26,23,20,0.04);
+}
+
+/* Serif heading utility */
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+/* Loupe cursor */
+.cursor-loupe {
+  cursor: zoom-in;
+}
+.cursor-loupe-active {
+  cursor: none;
+}

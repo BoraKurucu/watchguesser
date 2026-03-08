@@ -1,0 +1,27 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── User profiles & game history ──────────────────────────────────────────
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+
+      match /games/{gameId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+
+      match /purchases/{purchaseId} {
+        allow read: if request.auth != null && request.auth.uid == userId;
+        // Purchases are written only by Cloud Functions (admin SDK), not the client
+        allow write: if false;
+      }
+    }
+
+    // ── Daily Challenge Leaderboard ────────────────────────────────────────────
+    // Anyone can read; authenticated users can only write their own score entry
+    match /leaderboard/{day}/scores/{uid} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.uid == uid;
+    }
+  }
+}
